@@ -1,0 +1,9 @@
+bank_id,usr_id,bank,account,info_available
+0,0,itau,112233-4,yes
+1,0,nubank,321654151-1,yes
+2,1,c6bank,3485-4,yes
+3,3,bradesco,987984-8,no
+4,2,nubank,35486266-9,yes
+5,3,inter,664851-7,yes
+6,2,itau,325846-9,no
+7,3,c6bank,987987-6,yes
