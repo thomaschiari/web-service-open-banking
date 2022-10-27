@@ -16,16 +16,35 @@ class UserTransaction(Resource):
     def get(self, cpf):
         query = f"SELECT * FROM tbl_user WHERE cpf = '{cpf}'"
         user = select_query(query)
+        print(user)
+        print(type(user), type(user[0]))
         if user:
             user_id = user[0][0]
             query = f"SELECT * FROM tbl_bank WHERE usr_id = '{user_id}'"
-            bank = select_query(query)
-            if bank:
-                bank_id = bank[0][0]
-                query = f"SELECT * FROM tbl_transaction WHERE bank_id = '{bank_id}'"
-                transactions = select_query(query)
-                return jsonify(transactions), 200
-            return jsonify({'error': 'User not found'}), 404
+            banks = select_query(query)
+            print(banks)
+            if banks:
+                banks_list = []
+                transactions = []
+                for bank in banks:
+                    banks_list.append({
+                        "bank_name": bank[2],
+                        "bank_account": bank[3]
+                    })
+                    bank_id = bank[0]
+                    query = f"SELECT * FROM tbl_transaction WHERE bank_id = '{bank_id}'"
+                    transactions.append(select_query(query))
+                print(transactions)
+                context = {
+                    "username": user[0][1],
+                    "email": user[0][2],
+                    "cpf": user[0][3],
+                    "banks": banks_list,
+                    "transactions": transactions
+                }
+                return context, 200
+            return {'error': 'User not found'}, 404
+        return {'error': 'User not found'}, 404
 
 
 api.add_resource(UserTransaction, "/user/<string:cpf>")
