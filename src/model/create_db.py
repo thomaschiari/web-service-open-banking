@@ -72,3 +72,23 @@ def load_table_transaction(path_db, path_csv):
     con.commit()
     con.close()
 
+def main():
+    rel_arquivo_db =  Path('base.db')
+    caminho_arquivo_db = src_folder / rel_arquivo_db
+
+    rel_arquivo_csv =  Path('csv_users.csv')
+    caminho_arquivo_csv = src_folder / rel_arquivo_csv
+
+    create_db(caminho_arquivo_db)
+    load_table_user(caminho_arquivo_db, caminho_arquivo_csv)
+
+    rel_arquivo_csv =  Path('table_bankinfo.csv')
+    caminho_arquivo_csv = src_folder / rel_arquivo_csv
+
+    load_table_bank(caminho_arquivo_db, caminho_arquivo_csv)
+
+    rel_arquivo_csv =  Path('table_transactions.csv')
+    caminho_arquivo_csv = src_folder / rel_arquivo_csv
+
+    load_table_transaction(caminho_arquivo_db, caminho_arquivo_csv)
+
