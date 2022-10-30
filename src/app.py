@@ -23,13 +23,10 @@ class UserTransaction(Resource):
     def get(self, cpf):
         query = f"SELECT * FROM tbl_user WHERE cpf = '{cpf}'"
         user = select_query(query)
-        print(user)
-        print(type(user), type(user[0]))
         if user:
             user_id = user[0][0]
             query = f"SELECT * FROM tbl_bank WHERE usr_id = '{user_id}'"
             banks = select_query(query)
-            print(banks)
             if banks:
                 banks_list = []
                 transactions = []
@@ -41,7 +38,6 @@ class UserTransaction(Resource):
                     bank_id = bank[0]
                     query = f"SELECT * FROM tbl_transaction WHERE bank_id = '{bank_id}'"
                     transactions.append(select_query(query))
-                print(transactions)
                 context = {
                     "username": user[0][1],
                     "email": user[0][2],
