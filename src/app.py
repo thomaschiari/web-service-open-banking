@@ -11,6 +11,13 @@ api = Api(app)
 def create_tables():
     main()
 
+class Home(Resource):
+    def get(self):
+        return jsonify({"message": "Web API: Transactional Data Request"}), 200
+
+class User(Resource):
+    def get(self):
+        return jsonify({'Correct Usage': 'URL + /user/User_CPF'}), 200
 
 class UserTransaction(Resource):
     def get(self, cpf):
@@ -46,6 +53,10 @@ class UserTransaction(Resource):
             return {'error': 'User not found'}, 404
         return {'error': 'User not found'}, 404
 
+
+api.add_resource(Home, '/')
+
+api.add_resource(User, '/user')
 
 api.add_resource(UserTransaction, "/user/<string:cpf>")
 
