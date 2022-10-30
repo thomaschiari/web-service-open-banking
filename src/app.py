@@ -13,11 +13,11 @@ def create_tables():
 
 class Home(Resource):
     def get(self):
-        return jsonify({"message": "Web API: Transactional Data Request"}), 200
+        return {"message": "Web API: Transactional Data Request"}, 200
 
 class User(Resource):
     def get(self):
-        return jsonify({'Correct Usage': 'URL + /user/User_CPF'}), 200
+        return {'Correct Usage': 'URL + /user/User_CPF'}, 200
 
 class UserTransaction(Resource):
     def get(self, cpf):
