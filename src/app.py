@@ -61,4 +61,4 @@ api.add_resource(User, '/user')
 api.add_resource(UserTransaction, "/user/<string:cpf>")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
