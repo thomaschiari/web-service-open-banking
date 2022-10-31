@@ -6,3 +6,6 @@ O Web Service complementa o projeto, fornecendo os dados de transações finance
 Repositório do projeto completo: <a href="https://github.com/marchettomarcelo/Time-Tuscou">Clique aqui</a>
 
 Acesso à API de testes: <a href="https://projagil-transactions.herokuapp.com">Clique aqui</a>
+- URLs de Acesso:
+    -   /user : Diretório de usuários
+    -   /user/<user_cpf> : Requisição (GET) dos dados de usuário específico (fictício)
